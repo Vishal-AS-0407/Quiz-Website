@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="contact_style.css">
+  <title >Contact-Page</title>
+</head>
+<body>
+  <a class="logo" href=".//main.html">Quizo.</a>
+  <div class="background">
+    <div class="container">
+      <div class="screen">
+        <div class="screen-header">
+          <div class="screen-header-left">
+            <div class="screen-header-button close"></div>
+            <div class="screen-header-button maximize"></div>
+            <div class="screen-header-button minimize"></div>
+          </div>
+          <div class="screen-header-right">
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+          </div>
+        </div>
+        <div class="screen-body">
+          <div class="screen-body-item left">
+            <div class="app-title">
+              <span>CONTACT</span>
+              <span>US</span>
+            </div>
+            <div class="app-contact">CONTACT INFO: +91 8190365467</div>
+          </div>
+          <div class="screen-body-item">
+            <div class="app-form">
+              <div class="app-form-group">
+                <input id="nameInput" class="app-form-control" placeholder="NAME">
+              </div>
+              <div class="app-form-group">
+                <input id="emailInput" class="app-form-control" placeholder="EMAIL">
+              </div>
+              <div class="app-form-group">
+                <input id="contactInput" class="app-form-control" placeholder="CONTACT NO">
+              </div>
+              <div class="app-form-group message">
+                <input id="messageInput" class="app-form-control" placeholder="MESSAGE">
+              </div>
+              <div class="app-form-group buttons">
+                <button id="cancelButton" class="app-form-button">CANCEL</button>
+                <button id="sendButton" class="app-form-button">SEND</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="credits">
+        A website made by deepan and vishal
+      </div>
+    </div>
+    <script>
+      // Function to validate email format
+      function isValidEmail(email) {
+        // Basic email validation regex pattern
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      // Function to validate the form inputs
+      function validateForm() {
+        const nameInput = document.getElementById('nameInput');
+        const emailInput = document.getElementById('emailInput');
+        const contactInput = document.getElementById('contactInput');
+        const messageInput = document.getElementById('messageInput');
+
+        // Check if the name is entered
+        if (nameInput.value.trim() === '') {
+          alert('Please enter your name.');
+          return false;
+        }
+
+        // Check if the email is entered and valid
+        const email = emailInput.value.trim();
+        if (email === '') {
+          alert('Please enter your email.');
+          return false;
+        } else if (!isValidEmail(email)) {
+          alert('Please enter a valid email address.');
+          return false;
+        }
+
+        // Check if the contact number is entered
+        if (contactInput.value.trim() === '') {
+          alert('Please enter your contact number.');
+          return false;
+        }
+
+        // Check if the message is entered
+        if (messageInput.value.trim() === '') {
+          alert('Please enter your message.');
+          return false;
+        }
+
+        // Form validation succeeded
+        return true;
+      }
+
+      // Clear the form inputs
+      document.getElementById('cancelButton').addEventListener('click', function() {
+        document.querySelectorAll('.app-form-control').forEach(function(input) {
+          input.value = '';
+        });
+      });
+
+      // Validate the form and submit
+      document.getElementById('sendButton').addEventListener('click', function() {
+        if (validateForm()) {
+          // Form validation succeeded, you can proceed with submitting the form or redirecting to another page
+          window.location.href ='thankyou.html'  ;
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>
